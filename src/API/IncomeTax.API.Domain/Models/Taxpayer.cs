@@ -9,7 +9,7 @@ namespace IncomeTax.API.Domain.Models
         public string Name { get; set; }
         public long CPF { get; set; }
         public short NumberOfDependents { get; set; }
-        
+
         /// <summary>
         /// Renda bruta mensal.
         /// </summary>
