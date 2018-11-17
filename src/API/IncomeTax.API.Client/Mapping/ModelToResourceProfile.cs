@@ -9,6 +9,7 @@ namespace IncomeTax.API.Client.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<BasicWageResource, BasicWage>();
+            CreateMap<Taxpayer, TaxpayerResource>();
         }
     }
 }

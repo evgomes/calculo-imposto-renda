@@ -12,4 +12,10 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IncomeTax.API.Client\IncomeTax.API.Client.csproj" />
+    <ProjectReference Include="..\IncomeTax.API.Domain\IncomeTax.API.Domain.csproj" />
+    <ProjectReference Include="..\IncomeTax.API.Services\IncomeTax.API.Services.csproj" />
+  </ItemGroup>
+
 </Project>

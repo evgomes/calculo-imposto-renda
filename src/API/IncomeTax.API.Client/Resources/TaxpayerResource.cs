@@ -6,12 +6,12 @@ namespace IncomeTax.API.Client.Resources
         public string Name { get; set; }
         public long CPF { get; set; }
         public short NumberOfDependents { get; set; }
-        public decimal GrossIncome { get; set; }
+        public decimal MonthlyGrossIncome { get; set; }
 
         /// <summary>
         /// Alíquota do imposto de renda.
         /// </summary>
-        public decimal IncomeTaxRate { get; set; }
+        public decimal IncomeTaxRatePercentage { get; set; }
 
         /// <summary>
         /// Total de imposto a pagar.

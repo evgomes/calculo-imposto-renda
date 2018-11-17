@@ -4,7 +4,8 @@ using IncomeTax.API.Domain.Services.Calculations;
 namespace IncomeTax.API.Services.Calculations
 {
     /// <summary>
-    /// Estratégia de cálculo de desconto para o imposto de renda que desconta 5% do valor do salário mínimo vezes a quantidade de dependentes de um contribuinte. 
+    /// Estratégia de cálculo de desconto para o imposto de renda que desconta 5% do valor do salário mínimo vezes a quantidade de 
+    /// dependentes de um contribuinte. 
     /// </summary>
     public class DependentsTaxpayerDiscountStrategy : ITaxpayerDiscountStrategy
     {

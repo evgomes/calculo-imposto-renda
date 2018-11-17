@@ -21,8 +21,10 @@ namespace IncomeTax.API.Persistence.EF.Contexts
             builder.Entity<Taxpayer>().Property(t => t.Name).IsRequired().HasMaxLength(100);
             builder.Entity<Taxpayer>().Property(t => t.CPF).IsRequired().HasMaxLength(11);
             builder.Entity<Taxpayer>().Property(t => t.NumberOfDependents).IsRequired();
-            builder.Entity<Taxpayer>().Property(t => t.MonthlyGrossIncome).IsRequired().HasColumnType("decimal(10, 2)");;
+            builder.Entity<Taxpayer>().Property(t => t.MonthlyGrossIncome).IsRequired().HasColumnType("decimal(10, 2)");
             builder.Entity<Taxpayer>().HasIndex(t => t.CPF).IsUnique();
+            builder.Entity<Taxpayer>().Ignore(t => t.IncomeTaxRatePercentage);
+            builder.Entity<Taxpayer>().Ignore(t => t.TotalIncomeTax);
         }
     }
 }
