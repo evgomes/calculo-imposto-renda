@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered mt-3">
+  <thead>
+    <tr>
+      <td scope="col">Nome</td>
+      <td scope="col">CPF</td>
+      <td scope="col">Número de Dependentes</td>
+      <td scope="col">Renda Bruta</td>
+      <td scope="col">Alíquota</td>
+      <td scope="col">Total de Impostos à Pagar</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let taxpayer of taxpayers$ | async">
+      <td>{{ taxpayer.name }}</td>
+      <td>{{ taxpayer.cpf }}</td>
+      <td>{{ taxpayer.numberOfDependents }}</td>
+      <td>{{ taxpayer.monthlyGrossIncome | realcurrency:'BRL' }}</td>
+      <td>{{ taxpayer.incomeTaxRatePercentage }}%</td>
+      <td>{{ taxpayer.totalIncomeTax | realcurrency:'BRL' }}</td>
+    </tr>
+  </tbody>
+</table>
