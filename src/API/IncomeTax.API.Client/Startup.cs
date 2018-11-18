@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using AutoMapper;
 using IncomeTax.API.Domain.Repositories;
 using IncomeTax.API.Domain.Services;
 using IncomeTax.API.Domain.Services.Calculations;
@@ -12,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace IncomeTax.API.Client
 {
@@ -44,6 +48,31 @@ namespace IncomeTax.API.Client
 
             services.AddAutoMapper();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "API de Cálculo de Imposto de Renda",
+                            Version = "v1",
+                            Description = "API para cadastro de contribuintes do imposto de renda. Baseado nos dados de renda bruta mensal e dependentes, a alíquota do imposto e valor a ser pago de cada contribuinte são calculadas.",
+                            Contact = new Contact
+                            {
+                                Email = "evandro.ggomes@outlook.com",
+                                    Name = "Evandro Gayer Gomes",
+                            },
+                            License = new License
+                            {
+                                Name = "MIT"
+                            }
+                    });
+
+                // Adiciona comentários XML a documentaçao do Swagger.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -59,6 +88,14 @@ namespace IncomeTax.API.Client
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API de Cálculo de Imposto de Renda V1");
+            });
+
             app.UseMvc();
         }
     }

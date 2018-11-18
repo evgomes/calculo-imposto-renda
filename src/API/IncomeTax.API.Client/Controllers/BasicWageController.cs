@@ -25,7 +25,7 @@ namespace IncomeTax.API.Client.Controllers
         /// <summary>
         /// Retorna os dados do salário mínimo atual.
         /// </summary>
-        /// <return>Recurso com os dados do salário mínimo atual.</returns>
+        /// <returns>Recurso com os dados do salário mínimo atual.</returns>
         [HttpGet]
         public async Task<BasicWageResource> GetBasicWageDataAsync()
         {

@@ -4,11 +4,14 @@ using IncomeTax.API.Domain.Models;
 
 namespace IncomeTax.API.Client.Mapping
 {
+    /// <summary>
+    /// Mapeamento das models de domínio para classes de recurso da API.
+    /// </summary>
     public class ModelToResourceProfile : Profile
     {
         public ModelToResourceProfile()
         {
-            CreateMap<BasicWageResource, BasicWage>();
+            CreateMap<BasicWage, BasicWageResource>();
             CreateMap<Taxpayer, TaxpayerResource>();
         }
     }

@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IncomeTax.API.Tests.Services.Calculations
 {
+    /// <summary>
+    /// Testes da estratégia de cálculo nulo de desconto para contribuinte.
+    /// </summary>
     [TestClass]
     public class NoTaxpayerDiscountStrategyTests
     {

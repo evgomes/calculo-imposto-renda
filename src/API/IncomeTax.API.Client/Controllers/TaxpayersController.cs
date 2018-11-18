@@ -23,6 +23,10 @@ namespace IncomeTax.API.Client.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Retorna os dados de todos os contribuintes do imposto de renda cadastrados na base de dados.
+        /// </summary>
+        /// <returns>Enumeração de dados dos contribuintes.</returns>
         [HttpGet]
         public async Task<IEnumerable<TaxpayerResource>> ListAsync()
         {
@@ -32,6 +36,11 @@ namespace IncomeTax.API.Client.Controllers
             return taxpayersResources;
         }
 
+        /// <summary>
+        /// Retorna um contribuinte do imposto de renda por ID.
+        /// </summary>
+        /// <param name="id">ID do contribuinte.</param>
+        /// <returns>Dados do contribuinte.</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
@@ -46,8 +55,13 @@ namespace IncomeTax.API.Client.Controllers
             return Ok(taxpayerResource);
         }
 
+        /// <summary>
+        /// Cria um contribuinte e grava na base de dados.
+        /// </summary>
+        /// <param name="saveTaxpayerResource">Dados para criação do contribuinte.</param>
+        /// <returns>Dados do contribuinte cadastrado.</returns>
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(SaveTaxpayerResource saveTaxpayerResource)
+        public async Task<IActionResult> CreateAsync([FromBody] SaveTaxpayerResource saveTaxpayerResource)
         {
             if (!ModelState.IsValid)
             {
@@ -66,19 +80,18 @@ namespace IncomeTax.API.Client.Controllers
             return Ok(resource);
         }
 
+        /// <summary>
+        /// Atualiza os dados de um contribuinte.
+        /// </summary>
+        /// <param name="id">Código do contribuinte.</param>
+        /// <param name="saveTaxpayerResource">Dados do contribuinte para atualização.</param>
+        /// <returns>Dados atualizados do contribuinte.</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, SaveTaxpayerResource saveTaxpayerResource)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] SaveTaxpayerResource saveTaxpayerResource)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-
-            var existingTaxpayer = await _taxpayerService.GetByIdAsync(id);
-
-            if (existingTaxpayer == null)
-            {
-                return NotFound();
             }
 
             var taxpayer = _mapper.Map<SaveTaxpayerResource, Taxpayer>(saveTaxpayerResource);
@@ -93,16 +106,14 @@ namespace IncomeTax.API.Client.Controllers
             return Ok(resource);
         }
 
+        /// <summary>
+        /// Exclui os dados de um contribuinte.
+        /// </summary>
+        /// <param name="id">Código do contribuinte.</param>
+        /// <returns>Dados excluídos do contribuinte.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var existingTaxpayer = await _taxpayerService.GetByIdAsync(id);
-
-            if (existingTaxpayer == null)
-            {
-                return NotFound();
-            }
-
             var response = await _taxpayerService.DeleteAsync(id);
             if (!response.Success)
             {

@@ -6,8 +6,10 @@ using IncomeTax.API.Persistence.EF.Contexts;
 namespace IncomeTax.API.Persistence.EF
 {
     /// <summary>
-    /// EF Core already supports database seeding throught overriding "OnModelCreating", but I prefer to keep this functionality separated from
-    /// the DbContext because I can use dependency injection in this class if needed.
+    /// O EF Core suporta seed de dados através do método "OnModelCreating", porém prefiro manter essa funcionalidade separada para permitir utilizar
+    /// injeção de dependência de serviços nessa classe caso necessário.
+    /// 
+    /// Exemplo de API onde utilizei essa funcionalidade: https://github.com/evgomes/jwt-api/blob/master/src/Persistence/DatabaseSeed.cs
     /// </summary>
     public static class DatabaseSeed
     {

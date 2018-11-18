@@ -5,6 +5,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IncomeTax.API.Tests.Services.Calculations
 {
+    /// <summary>
+    /// Testes do serviço de cálculos de taxas referentes ao imposto de renda.
+    /// </summary>
     [TestClass]
     public class IncomeTaxCalculatorServiceTests
     {

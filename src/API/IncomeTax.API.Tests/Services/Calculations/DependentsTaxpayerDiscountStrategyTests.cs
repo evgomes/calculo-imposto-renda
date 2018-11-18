@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IncomeTax.API.Tests.Services.Calculations
 {
+    /// <summary>
+    /// Testes da estratégia de desconto por dependentes.
+    /// </summary>
     [TestClass]
     public class DependentsTaxpayerDiscountStrategyTests
     {

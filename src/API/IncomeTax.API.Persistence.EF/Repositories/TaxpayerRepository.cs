@@ -20,5 +20,35 @@ namespace IncomeTax.API.Persistence.EF.Repositories
         {
             return await _context.Taxpayer.AsNoTracking().ToListAsync();
         }
+
+        public async Task<Taxpayer> GetByIdAsync(int id)
+        {
+            if (id <= 0)
+            {
+                return null;
+            }
+
+            return await _context.Taxpayer.FirstOrDefaultAsync(taxpayer => taxpayer.Id == id);
+        }
+
+        public async Task<Taxpayer> GetByCPFAsync(long CPF)
+        {
+            return await _context.Taxpayer.FirstOrDefaultAsync(taxpayer => taxpayer.CPF == CPF);
+        }
+
+        public async Task AddAsync(Taxpayer taxpayer)
+        {
+            await _context.Taxpayer.AddAsync(taxpayer);
+        }
+
+        public void Update(Taxpayer taxpayer)
+        {
+            _context.Taxpayer.Update(taxpayer);
+        }
+
+        public void Delete(Taxpayer taxpayer)
+        {
+            _context.Taxpayer.Remove(taxpayer);
+        }
     }
 }
