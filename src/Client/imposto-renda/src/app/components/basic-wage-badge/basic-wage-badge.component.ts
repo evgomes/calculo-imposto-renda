@@ -1,7 +1,8 @@
-import { BasicWage } from './../../models/basic-wage';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BasicWageService } from 'src/app/services/basic-wage.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { BasicWageService } from 'src/app/services/basic-wage.service';
+
+import { BasicWage } from './../../models/basic-wage';
 
 @Component({
   selector: 'app-basic-wage-badge',

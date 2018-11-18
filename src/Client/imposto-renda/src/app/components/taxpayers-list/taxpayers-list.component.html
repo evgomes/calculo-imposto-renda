@@ -1,22 +1,35 @@
-<table class="table table-striped table-bordered mt-3">
-  <thead>
-    <tr>
-      <td scope="col">Nome</td>
-      <td scope="col">CPF</td>
-      <td scope="col">Número de Dependentes</td>
-      <td scope="col">Renda Bruta</td>
-      <td scope="col">Alíquota</td>
-      <td scope="col">Total de Impostos à Pagar</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let taxpayer of taxpayers$ | async">
-      <td>{{ taxpayer.name }}</td>
-      <td>{{ taxpayer.cpf }}</td>
-      <td>{{ taxpayer.numberOfDependents }}</td>
-      <td>{{ taxpayer.monthlyGrossIncome | realcurrency:'BRL' }}</td>
-      <td>{{ taxpayer.incomeTaxRatePercentage }}%</td>
-      <td>{{ taxpayer.totalIncomeTax | realcurrency:'BRL' }}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="taxpayers$ | async as taxpayers">
+  <div *ngIf="taxpayers.length > 0; else empty;">
+    <table class="table table-striped table-bordered mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Número de Dependentes</th>
+          <th scope="col">Renda Bruta <span class="badge badge-dark" ngbTooltip="Renda bruta mensal do contribuinte.">?</span></th>
+          <th scope="col">Alíquota <span class="badge badge-dark" ngbTooltip="O cálculo da alíquota pode variar de acordo com a quantidade de dependentes.">?</span></th>
+          <th scope="col">Total de Impostos à Pagar <span class="badge badge-dark" ngbTooltip="Alíquota descontada da renda bruta mensal, subtraída de um desconto de 5% do salário mínimo atual para cada dependente.">?</span></th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let taxpayer of taxpayers">
+          <td>{{ taxpayer.name }}</td>
+          <td>{{ taxpayer.cpf | cpf }}</td>
+          <td>{{ taxpayer.numberOfDependents }}</td>
+          <td>{{ taxpayer.monthlyGrossIncome | realcurrency:'BRL' }}</td>
+          <td>{{ taxpayer.incomeTaxRatePercentage }}%</td>
+          <td>{{ taxpayer.totalIncomeTax | realcurrency:'BRL' }}</td>
+          <td class="text-center">
+            <a routerLink="/contribuintes/editar/{{taxpayer.id}}">
+              <i class="fa fa-edit" ngbTooltip="Editar"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #empty>
+    <p>Nenhum contribuinte encontrado.</p>
+  </ng-template>
+</div>

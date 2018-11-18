@@ -9,7 +9,7 @@ import { TaxpayersService } from 'src/app/services/taxpayers.service';
   styleUrls: ['./taxpayers-list.component.css']
 })
 export class TaxpayersListComponent implements OnInit {
-  taxpayers$: Observable<Taxpayer>;
+  taxpayers$: Observable<Taxpayer[]>;
 
   constructor(private taxpayersService: TaxpayersService) { }
 
