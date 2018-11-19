@@ -21,7 +21,7 @@ Aplicação de teste desenvolvida para calcular o imposto de renda de pessoas f�
 - cpf-mask-ng2 (validação de CPFs);
 - Rxjs (utilização de observables);
 
-### Requisitos para testar
+## Requisitos para testar
 
 Para testar a aplicação, é necessário ter os seguintes programas instalados na máquina:
 
