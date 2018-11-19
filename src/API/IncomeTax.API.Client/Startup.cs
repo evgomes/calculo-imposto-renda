@@ -30,13 +30,7 @@ namespace IncomeTax.API.Client
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseMySql(Configuration.GetConnectionString("AppDbContext"), opt =>
-                {
-                    opt.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName);
-                });
-            });
+            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("incometax"));
 
             services.AddScoped<IBasicWageRepository, BasicWageRepository>();
             services.AddScoped<ITaxpayerRepository, TaxpayerRepository>();
