@@ -2,6 +2,8 @@
 
 Aplicação de teste desenvolvida para calcular o imposto de renda de pessoas físicas com base em regras pré-estabelecidas para quantidade de dependentes e faixa salarial de contribuintes.
 
+![Aplicação](https://raw.githubusercontent.com/evgomes/calculo-imposto-renda/master/images/taxpayers-list.png)
+
 ## Tecnologias Utilizadas
 ### API
 - ASP.NET Core 2.1;
@@ -45,8 +47,11 @@ O segundo comando iniciará a aplicação front-end feita em Angular. Acesse o e
 
 A API possui documentação gerada automaticamente pelo Swagger. Para acessar, com a API rodando, acesse o endereço ```https://localhost:5001/swagger```. Caso dê erro de certificado digital, adicione uma exceção ao navegador para visualizar o conteúdo.
 
+![Swagger](https://raw.githubusercontent.com/evgomes/calculo-imposto-renda/master/images/swagger-doc.png)
+
 ### Melhorias Futuras
 - Testes unitários de rotas da API e injeção de dependência;
 - Testes do front-end;
 - Utilização de cache na API para melhorar performance, principalmente na parte de cálculos;
-- Paginação de dados de contribuintes.
+- Paginação de dados de contribuintes;
+- Configurar integração e deploy contínuo no Travis e configurar Docker.
