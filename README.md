@@ -60,6 +60,7 @@ A API possui documentação gerada automaticamente pelo Swagger. Para acessar, c
 ### Melhorias Futuras
 - Testes unitários de rotas da API e injeção de dependência;
 - Testes do front-end;
+- Trocar o provedor de banco de dados em memória para um banco de dados relacional como MySQL ou SQL Server (possui suporte, não foi utilizado por conveniência);
 - Utilização de cache na API para melhorar performance, principalmente na parte de cálculos;
 - Paginação de dados de contribuintes;
 - Configurar integração e deploy contínuo no Travis e configurar Docker.
