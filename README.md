@@ -5,6 +5,7 @@ Aplicação de teste desenvolvida para calcular o imposto de renda de pessoas f�
 ![Aplicação](https://raw.githubusercontent.com/evgomes/calculo-imposto-renda/master/images/taxpayers-list.png)
 
 ## Tecnologias Utilizadas
+
 ### API
 - ASP.NET Core 2.1;
 - Entity Framework Core 2.1 (framework ORM para acesso a dados);
@@ -19,6 +20,13 @@ Aplicação de teste desenvolvida para calcular o imposto de renda de pessoas f�
 - Ngx-Toastr (notificações toast);
 - cpf-mask-ng2 (validação de CPFs);
 - Rxjs (utilização de observables);
+
+### Requisitos para testar
+
+Para testar a aplicação, é necessário ter os seguintes programas instalados na máquina:
+
+- [.NET Core SDK](https://www.microsoft.com/net/download/dotnet-core/2.1) versão 2.1.5
+- [Node.js](https://nodejs.org/en/download/) (última versão estável "LTS")
 
 ### Como Testar
 
